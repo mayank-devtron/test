@@ -13,6 +13,6 @@ COPY ${IMG_DIR} /usr/share/nginx/html/${IMG_DIR}
 # Echo the secret password (for demonstration purposes)
 RUN echo "The secret password is: ${SECRET_PASSWORD}"
 
-
-echo "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
-echo "ghp_1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcd"
+#dummy secrets
+RUN echo "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+RUN echo "ghp_1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcd"
