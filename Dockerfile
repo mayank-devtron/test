@@ -1,11 +1,18 @@
 # Use the nginx base image
 FROM nginx
 
-ARG MY_VAR=default_value
-ARG EXAMPLE_TEXT=Default example text content
+# Define a build argument for the YAML content
+ARG CONFIG_YAML
 
-RUN echo "MY_VAR: ${MY_VAR}"
-RUN echo "${EXAMPLE_TEXT}"  > /example.txt
-RUN cat /example.txt
-# Copy a directory into the container
+# Create a directory for the config file
+RUN mkdir -p /usr/share/nginx/config
+
+# Write the YAML content to config.yaml
+RUN echo "$CONFIG_YAML" > /usr/share/nginx/config/config.yaml
+
+# Copy other required files
+COPY index.html /usr/share/nginx/html/
 COPY img /usr/share/nginx/html/img/
+
+# Run the cat command to display the YAML file contents
+RUN cat /usr/share/nginx/config/config.yaml
