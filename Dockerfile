@@ -1,9 +1,14 @@
+# Use the nginx base image
 FROM nginx
-COPY index.html /usr/share/nginx/html/
+
+# Define build arguments
+ARG EXAMPLE_TEXT='Default example text content'
+
+# Copy a directory into the container
 COPY img /usr/share/nginx/html/img/
 
-# Copy a file into the container
-COPY example.txt /example.txt
+# Use build arguments to create the example.txt file
+RUN echo '${EXAMPLE_TEXT}' > /example.txt
 
 # Run the cat command to display the file contents
 RUN cat /example.txt
