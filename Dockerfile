@@ -1,18 +1,11 @@
-# Use the nginx base image
-FROM nginx
+# Use a lightweight base image
+FROM alpine:latest
 
-# Define a build argument for the YAML content
+# Set the build argument
 ARG CONFIG_YAML
 
-# Create a directory for the config file
-RUN mkdir -p /usr/share/nginx/config
+# Print the CONFIG_YAML argument to a file
+RUN echo "$CONFIG_YAML" > /config.yaml
 
-# Write the YAML content to config.yaml
-RUN echo "$CONFIG_YAML" > /usr/share/nginx/config/config.yaml
-
-# Copy other required files
-COPY index.html /usr/share/nginx/html/
-COPY img /usr/share/nginx/html/img/
-
-# Run the cat command to display the YAML file contents
-RUN cat /usr/share/nginx/config/config.yaml
+# Set the entrypoint to cat the file
+ENTRYPOINT ["cat", "/config.yaml"]
