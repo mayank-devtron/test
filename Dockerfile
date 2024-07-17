@@ -2,7 +2,7 @@
 FROM nginx
 
 # Define build arguments
-ARG EXAMPLE_TEXT='Default example text content'
+ARG EXAMPLE_TEXT="Default example text content"
 
 # Copy a directory into the container
 COPY img /usr/share/nginx/html/img/
