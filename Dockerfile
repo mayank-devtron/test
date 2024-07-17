@@ -2,7 +2,7 @@
 FROM nginx
 
 ARG MY_VAR=default_value
-ARG EXAMPLE_TEXT="Default example text content"
+ARG EXAMPLE_TEXT=Default example text content
 
 RUN echo "MY_VAR: ${MY_VAR}"
 RUN echo '${EXAMPLE_TEXT}'
