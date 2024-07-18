@@ -1,11 +1,7 @@
-# Use a lightweight base image
-FROM alpine:latest
+ARG EXAMPLE_TEXT=Default example text content
 
-# Set the build argument
-ARG CONFIG_YAML
-
-# Print the CONFIG_YAML argument to a file
-RUN echo "$CONFIG_YAML" > /config.yaml
-
-# Set the entrypoint to cat the file
-ENTRYPOINT ["cat", "/config.yaml"]
+RUN echo "MY_VAR: ${MY_VAR}"
+RUN echo "${EXAMPLE_TEXT}"  > /example.txt
+RUN cat /example.txt
+# Copy a directory into the container
+COPY img /usr/share/nginx/html/img/
